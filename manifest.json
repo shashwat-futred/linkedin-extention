@@ -1,0 +1,36 @@
+{
+  "manifest_version": 3,
+  "name": "LinkedIn Cookie Extractor",
+  "version": "1.0",
+  "description": "Extracts LinkedIn cookies and sends them to backend API",
+  "permissions": [
+    "cookies",
+    "activeTab",
+    "storage"
+  ],
+  "host_permissions": [
+    "https://*.linkedin.com/*"
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icons/world.png",
+      "48": "icons/world.png",
+      "128": "icons/world.png"
+    }
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://*.linkedin.com/*"],
+      "js": ["content.js"]
+    }
+  ],
+  "icons": {
+    "16": "icons/world.png",
+    "48": "icons/world.png",
+    "128": "icons/world.png"
+  }
+} 

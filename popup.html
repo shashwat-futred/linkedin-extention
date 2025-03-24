@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>LinkedIn Cookie Extractor</title>
+  <style>
+    body {
+      width: 300px;
+      padding: 15px;
+      font-family: Arial, sans-serif;
+    }
+    .container {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    button {
+      padding: 8px 16px;
+      background-color: #0077b5;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #006097;
+    }
+    button:disabled {
+      background-color: #cccccc;
+      cursor: not-allowed;
+    }
+    #status {
+      margin-top: 10px;
+      padding: 10px;
+      border-radius: 4px;
+      display: none;
+    }
+    .success {
+      background-color: #d4edda;
+      color: #155724;
+    }
+    .error {
+      background-color: #f8d7da;
+      color: #721c24;
+    }
+    #debugLog {
+      margin-top: 10px;
+      padding: 10px;
+      background-color: #f8f9fa;
+      border-radius: 4px;
+      font-family: monospace;
+      font-size: 12px;
+      max-height: 200px;
+      overflow-y: auto;
+    }
+    #generatedPosts {
+      margin-top: 10px;
+      padding: 10px;
+      background-color: #f8f9fa;
+      border-radius: 4px;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+      font-size: 14px;
+      line-height: 1.5;
+      max-height: 300px;
+      overflow-y: auto;
+    }
+    .input-group {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+    .input-group label {
+      font-size: 14px;
+      color: #333;
+    }
+    .input-group input {
+      padding: 8px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-size: 14px;
+    }
+    .input-group input:focus {
+      outline: none;
+      border-color: #0077b5;
+    }
+    .checkbox-group {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 5px;
+    }
+    .checkbox-group input[type="checkbox"] {
+      width: 16px;
+      height: 16px;
+    }
+    .checkbox-group label {
+      font-size: 14px;
+      color: #333;
+      cursor: pointer;
+    }
+    .number-inputs {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      margin-top: 10px;
+    }
+    .number-input {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .number-input input {
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>LinkedIn Cookie Extractor</h2>
+    <div class="input-group">
+      <label for="profileUrls">LinkedIn Profile URLs (comma-separated):</label>
+      <input type="text" id="profileUrls" placeholder="https://linkedin.com/in/profile1, https://linkedin.com/in/profile2">
+      <div class="checkbox-group">
+        <input type="checkbox" id="useOnlyProfiles">
+        <label for="useOnlyProfiles">Use only these profiles</label>
+      </div>
+      <div class="number-inputs">
+        <div class="number-input">
+          <label for="minLikes">Min Likes:</label>
+          <input type="number" id="minLikes" min="0" value="0">
+        </div>
+        <div class="number-input">
+          <label for="numUsers">Number of Users:</label>
+          <input type="number" id="numUsers" min="1" value="1">
+        </div>
+        <div class="number-input">
+          <label for="postsPerUser">Posts per User:</label>
+          <input type="number" id="postsPerUser" min="1" value="1">
+        </div>
+      </div>
+    </div>
+    <button id="extractCookies">Extract Cookies</button>
+    <div id="status"></div>
+    <div id="generatedPosts"></div>
+    <div id="debugLog"></div>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html> 
